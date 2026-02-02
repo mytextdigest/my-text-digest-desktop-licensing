@@ -1,0 +1,62 @@
+{
+  "name": "my_text_digest_saas_desktop_licensing",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "My Text Digest",
+    "email": "mytextdigest@gmail.com"
+  },
+  "description": "My Text Digest — SaaS for document summarization and Q&A",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+    
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
+    "@aws-sdk/client-s3": "^3.922.0",
+    "@aws-sdk/client-ses": "^3.932.0",
+    "@aws-sdk/client-sqs": "^3.931.0",
+    "@aws-sdk/s3-presigned-post": "^3.922.0",
+    "@aws-sdk/s3-request-presigner": "^3.932.0",
+    "@headlessui/react": "^2.2.8",
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "@prisma/client": "^6.18.0",
+    "bcrypt": "^6.0.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.2",
+    "framer-motion": "^12.23.19",
+    "lucide-react": "^0.544.0",
+    "mammoth": "^1.11.0",
+    "next": "16.0.10",
+    "next-auth": "^4.24.13",
+    "nodemailer": "^7.0.10",
+    "openai": "^5.23.0",
+    "p-limit": "^7.2.0",
+    "pdf-extraction": "^1.0.2",
+    "pdf-parse": "^1.1.1",
+    "pdf-parse-fork": "^1.2.0",
+    "pdf2json": "^4.0.0",
+    "pdfjs-dist": "^2.16.105",
+    "prisma": "^6.18.0",
+    "react": "19.1.0",
+    "react-doc-viewer": "^0.1.15",
+    "react-dom": "19.1.0",
+    "stripe": "^20.1.2",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.3",
+    "tailwindcss": "^4"
+  }
+}

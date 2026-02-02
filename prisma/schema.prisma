@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//////////////////////////////////////////////////
+// Core Auth
+//////////////////////////////////////////////////
+
+model User {
+  id            String   @id @default(cuid())
+  name          String?
+  email         String   @unique
+  password      String?
+  image         String?
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  desktopSubscription DesktopSubscription?
+  devices              Device[]
+  licenseSessions      LicenseSession[]
+}
+
+model OtpToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String
+  expiresAt DateTime
+
+  @@index([email])
+}
+
+//////////////////////////////////////////////////
+// Desktop Plans
+//////////////////////////////////////////////////
+
+model DesktopPlan {
+  id              String   @id @default(cuid())
+  name            String   @unique // Personal, Pro
+  description     String?
+  deviceLimit     Int
+  priceCents      Int
+  currency        String   @default("USD")
+  stripePriceId   String   @unique
+  billingInterval String   @default("month")
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+
+  subscriptions   DesktopSubscription[]
+}
+
+//////////////////////////////////////////////////
+// Desktop Subscription
+//////////////////////////////////////////////////
+
+model DesktopSubscription {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  planId               String
+  status               String   // active, past_due, canceled, expired
+
+  stripeCustomerId     String
+  stripeSubscriptionId String
+
+  currentPeriodEnd     DateTime?
+  cancelAtPeriodEnd    Boolean  @default(false)
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  user User         @relation(fields: [userId], references: [id])
+  plan DesktopPlan @relation(fields: [planId], references: [id])
+}
+
+//////////////////////////////////////////////////
+// Device Binding
+//////////////////////////////////////////////////
+
+model Device {
+  id          String   @id @default(cuid())
+  userId      String
+  deviceHash  String   @unique
+  deviceName  String?
+  platform    String?
+
+  activatedAt DateTime @default(now())
+  lastSeenAt  DateTime?
+  revokedAt   DateTime?
+
+  user            User             @relation(fields: [userId], references: [id])
+  licenseSessions LicenseSession[]  // ✅ inverse relation
+
+  @@index([userId])
+}
+
+//////////////////////////////////////////////////
+// License Sessions (Offline Mode)
+//////////////////////////////////////////////////
+
+model LicenseSession {
+  id              String   @id @default(cuid())
+  userId          String
+  deviceId        String
+
+  issuedAt        DateTime @default(now())
+  expiresAt       DateTime
+  lastValidatedAt DateTime?
+  isRevoked       Boolean  @default(false)
+
+  user   User   @relation(fields: [userId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@index([userId])
+  @@index([deviceId])
+}
