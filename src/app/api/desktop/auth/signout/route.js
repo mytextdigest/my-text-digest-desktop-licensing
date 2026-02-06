@@ -32,13 +32,21 @@ export async function POST(req) {
     );
   }
 
-  // Revoke the device
-  await prisma.device.updateMany({
+  const device = await prisma.device.findFirst({
     where: {
       id: payload.deviceId,
-      userId: auth.sub,
-      revokedAt: null
-    },
+      userId: auth.sub
+    }
+  });
+
+  // Device already signed out or does not exist → treat as success
+  if (!device || device.revokedAt) {
+    return NextResponse.json({ success: true });
+  }
+
+  // Mark device as logged out
+  await prisma.device.update({
+    where: { id: device.id },
     data: {
       revokedAt: new Date()
     }
