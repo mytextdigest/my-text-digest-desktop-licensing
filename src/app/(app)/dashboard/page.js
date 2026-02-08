@@ -10,6 +10,7 @@ import {
   Cpu,
   LogOut
 } from "lucide-react";
+import Image from "next/image";
 
 export default function DashboardPage() {
   const [subscription, setSubscription] = useState(null);
@@ -212,36 +213,68 @@ export default function DashboardPage() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {/* Windows */}
             <Button asChild>
               <a
                 href={process.env.NEXT_PUBLIC_DESKTOP_WIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3"
               >
-                Windows
+                <Image
+                  src="/windows-logo.png"
+                  alt="Windows"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  priority
+                />
+                <span className="whitespace-nowrap">Windows</span>
               </a>
             </Button>
 
+            {/* macOS */}
             <Button asChild>
               <a
                 href={process.env.NEXT_PUBLIC_DESKTOP_MAC_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3"
               >
-                macOS
+                <Image
+                  src="/apple-logo.png"
+                  alt="macOS"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  priority
+                />
+                <span className="whitespace-nowrap">macOS</span>
               </a>
             </Button>
 
+            {/* Linux */}
             <Button asChild>
               <a
                 href={process.env.NEXT_PUBLIC_DESKTOP_LINUX_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3"
               >
-                Linux (.deb)
+                <Image
+                  src="/linux-logo.png"
+                  alt="Linux"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  priority
+                />
+                <span className="whitespace-nowrap">Linux (.deb)</span>
               </a>
             </Button>
           </div>
+
+
 
           <p className="text-xs text-gray-500">
             Linux package is provided as a <code>.deb</code> file
