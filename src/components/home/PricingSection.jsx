@@ -63,7 +63,7 @@ export default function PricingSection() {
   }, [visiblePlans]);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-secondary/40">
+    <section className="py-24 relative overflow-hidden bg-secondary/40" id="pricing">
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-100/40 rounded-full blur-3xl" />
@@ -181,7 +181,7 @@ export default function PricingSection() {
                         <ul className="space-y-3 mb-8 flex-grow">
                           <li className="flex gap-3 text-sm text-muted-foreground">
                             <Check className="w-4 h-4 text-primary-600" />
-                            {plan.storageLimitGb} GB storage
+                            Local document processing
                           </li>
                           <li className="flex gap-3 text-sm text-muted-foreground">
                             <Check className="w-4 h-4 text-primary-600" />
@@ -189,7 +189,15 @@ export default function PricingSection() {
                           </li>
                           <li className="flex gap-3 text-sm text-muted-foreground">
                             <Check className="w-4 h-4 text-primary-600" />
-                            Chat with files
+                            Project-based organization
+                          </li>
+                          <li className="flex gap-3 text-sm text-muted-foreground">
+                            <Check className="w-4 h-4 text-primary-600" />
+                            Document & Project Chat
+                          </li>
+                          <li className="flex gap-3 text-sm text-muted-foreground">
+                            <Check className="w-4 h-4 text-primary-600" />
+                            No cloud storage required
                           </li>
                         </ul>
 

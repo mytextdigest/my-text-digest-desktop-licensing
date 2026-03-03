@@ -45,9 +45,12 @@ export default function SubscribeClient({ plans }) {
         </div>
 
         {/* Plans */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {filteredPlans.map((plan) => (
-            <div key={plan.id} className="border p-6 rounded-lg">
+            <div
+              key={plan.id}
+              className="border p-6 rounded-lg w-full max-w-sm"
+            >
               <h2 className="text-lg font-semibold">{plan.name}</h2>
               <p className="text-sm text-gray-500">{plan.description}</p>
 
@@ -68,7 +71,7 @@ export default function SubscribeClient({ plans }) {
                   const res = await fetch("/api/stripe/checkout", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ planId: plan.id })
+                    body: JSON.stringify({ planId: plan.id }),
                   });
 
                   const data = await res.json();

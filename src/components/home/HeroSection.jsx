@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Lock, Zap, FileText } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 
@@ -9,125 +9,183 @@ export default function HeroSection() {
   const router = useRouter();
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Soft background blobs (aligned with globals.css) */}
-        <div className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-primary-100/60 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-[360px] h-[360px] bg-primary-200/40 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0b1220] text-white">
+      
+      {/* Radial glow background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.25),transparent_65%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1220]/70 to-[#0b1220]" />
+      </div>
 
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)
-            `,
-            backgroundSize: "64px 64px",
-          }}
-        />
+      {/* Floating particles (subtle) */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        {[...Array(40)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary-400 rounded-full"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8"
-        >
-          <Sparkles className="w-4 h-4 text-primary-500" />
-          <span className="text-sm font-medium text-muted-foreground">
-            Privacy-first document intelligence
-          </span>
-        </motion.div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
 
         {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+        {/* <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight"
+          transition={{ duration: 0.7 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
         >
-          Your documents.
+          Ask Anything.
           <br />
-          <span className="text-primary-600">
-            Instantly summarized
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)",
+            }}
+          >
+            From Your Documents.
           </span>
+        </motion.h1> */}
+
+        {/* Desktop Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 flex justify-center"
+        >
+          <div
+            className="
+              inline-flex items-center gap-2
+              px-5 py-2
+              rounded-full
+              bg-gradient-to-r from-primary-500/20 to-primary-600/20
+              border border-primary-500/40
+              text-primary-300
+              text-sm font-semibold tracking-wide
+              backdrop-blur-md
+              shadow-[0_0_25px_rgba(59,130,246,0.25)]
+            "
+          >
+            {/* <Download className="w-4 h-4" /> */}
+            DESKTOP VERSION
+          </div>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+        >
+          Your Knowledge.
           <br />
-          <span className="text-muted-foreground">
-            &amp; searchable.
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)",
+            }}
+          >
+            Structured by Project. Protected by Design.
           </span>
         </motion.h1>
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-8 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
         >
-          Transform PDFs, notes, and files into structured knowledge you can chat with —
-          organized into projects, private by design, and built for deep work.
+          Upload PDFs, docx or text — My Text Digest gives you
+          precise, contextual answers instantly. Private by design.
         </motion.p>
 
-        {/* CTA */}
+        {/* Feature Pills */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button
-            onClick={() => router.push("/auth/signup")}
-            size="lg"
-            className="bg-primary-600 hover:bg-primary-700 text-primary-foreground px-8 py-6 text-base font-medium shadow-lg group"
-          >
-            Get Started Free
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-
-          <Button
-            onClick={() => router.push("/dashboard")}
-            variant="outline"
-            size="lg"
-            className="px-8 py-6 text-base font-medium border-2"
-          >
-            See Demo
-          </Button>
-        </motion.div>
-
-        {/* Social proof */}
-        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.35 }}
-          className="mt-8 text-sm text-muted-foreground"
+          transition={{ delay: 0.25 }}
+          className="mt-10 flex flex-wrap justify-center gap-4"
         >
-          No credit card required · Start free with 1GB storage
-        </motion.p>
-      </div>
+          {[
+            { icon: Zap, label: "AI-powered understanding" },
+            { icon: FileText, label: "All document formats" },
+            { icon: Lock, label: "100% private & offline-ready" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="
+                flex items-center gap-2
+                px-4 py-2 rounded-xl
+                bg-white/5 backdrop-blur-md
+                border border-white/10
+                text-sm text-slate-300
+                hover:border-primary-500/40
+                transition
+              "
+            >
+              <item.icon className="w-4 h-4 text-primary-400" />
+              {item.label}
+            </div>
+          ))}
+        </motion.div>
 
-      {/* Decorative cards (static, safe) */}
-      <div className="hidden lg:block absolute left-[6%] top-1/3">
-        <div className="glass rounded-xl p-4 shadow-md w-48">
-          <div className="w-full h-2 bg-primary-200 rounded mb-2" />
-          <div className="w-3/4 h-2 bg-muted rounded mb-2" />
-          <div className="w-5/6 h-2 bg-muted rounded" />
-        </div>
-      </div>
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+          className="mt-12 flex flex-col sm:flex-row justify-center gap-4"
+        >
+          <Button
+            size="lg"
+            onClick={() => router.push("/auth/signup")}
+            className="
+              bg-gradient-to-r
+              from-primary-500
+              to-primary-600
+              hover:brightness-110
+              text-white
+              px-8 py-6
+              shadow-[0_15px_50px_rgba(59,130,246,0.45)]
+              hover:shadow-[0_20px_60px_rgba(59,130,246,0.65)]
+              transition-all duration-300
+              group
+            "
+          >
+            <Download className="mr-2 w-4 h-4" />
+            Sign Up For Desktop
+          </Button>
 
-      <div className="hidden lg:block absolute right-[6%] top-1/2">
-        <div className="glass rounded-xl p-4 shadow-md w-52">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-6 h-6 rounded-full bg-primary-500" />
-            <div className="w-20 h-2 bg-muted rounded" />
-          </div>
-          <div className="w-full h-2 bg-muted rounded mb-2" />
-          <div className="w-2/3 h-2 bg-muted rounded" />
-        </div>
+          {/* <Button
+            size="lg"
+            onClick={() => router.push("/dashboard")}
+            className="
+              bg-transparent
+              border border-white/30
+              text-white
+              hover:bg-white/10
+              hover:border-white/50
+              px-8 py-6
+              transition-all duration-300
+              group
+            "
+          >
+            Watch Demo
+            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Button> */}
+
+
+        </motion.div>
       </div>
     </section>
   );

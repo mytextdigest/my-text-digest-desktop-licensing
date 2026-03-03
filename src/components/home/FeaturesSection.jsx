@@ -52,7 +52,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden" id="features">
       {/* Soft background accent */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] bg-primary-100/40 rounded-full blur-3xl" />
