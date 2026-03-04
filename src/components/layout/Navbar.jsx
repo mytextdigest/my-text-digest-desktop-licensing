@@ -25,8 +25,14 @@ export default function Navbar() {
               className="flex cursor-pointer items-center gap-2.5"
               whileHover={{ opacity: 0.85 }}
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-indigo-200 shadow-md">
-                <FileText size={20} strokeWidth={2.5} />
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl shadow-md">
+                <Image
+                  src="/logo.png"
+                  alt="My Text Digest Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
               <div>
                 <span className="block text-lg font-bold leading-none text-slate-900">

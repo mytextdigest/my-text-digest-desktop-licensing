@@ -63,7 +63,7 @@ export default function SignupPage() {
             My Text Digest
           </h1>
           <p className="text-sm text-primary-600 font-medium mt-1">
-            Desktop Application
+            Desktop Version
           </p>
           <p className="text-muted-foreground text-sm mt-3">
           Create your account to get your license for desktop.
@@ -151,7 +151,7 @@ export default function SignupPage() {
                 <label htmlFor="terms" className="text-muted-foreground leading-relaxed">
                   I agree to the{" "}
                   <a
-                    href="/terms"
+                    href="https://my-text-digest-main-landing.vercel.app/terms"
                     target="_blank"
                     className="text-primary-600 hover:underline font-medium"
                   >
@@ -159,7 +159,7 @@ export default function SignupPage() {
                   </a>{" "}
                   and{" "}
                   <a
-                    href="/privacy"
+                    href="https://my-text-digest-main-landing.vercel.app/privacy"
                     target="_blank"
                     className="text-primary-600 hover:underline font-medium"
                   >
