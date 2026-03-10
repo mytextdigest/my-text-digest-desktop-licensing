@@ -271,6 +271,15 @@ const Header = ({
                           </div>
                         )}
 
+                        {/* Help & Support */}
+                        <button
+                          onClick={() => window.open("https://www.mytextdigest.com/help", "_blank")}
+                          className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                        >
+                          <HelpCircle className="w-4 h-4" />
+                          Help & Support
+                        </button>
+
                       {/* Logout */}
                       <LogoutButton />
                     </motion.div>
