@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { FileText, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 
 const useAuth = () => ({ isAuthenticated: false });
 
